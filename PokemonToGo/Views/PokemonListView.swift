@@ -6,29 +6,18 @@ struct PokemonListView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                if viewModel.isLoading {
-                    ProgressView()
-                } else if let error = viewModel.error {
-                    Text(error.localizedDescription)
-                } else if viewModel.pokemonList.isEmpty {
-                    Text("No Pokemon Found")
-                } else {
-                    List {
-                        ForEach(viewModel.pokemonList) { pokemon in
-                            NavigationLink(destination: PokemonDetailView(pokemonId: pokemon.id)) {
-                                HStack {
-                                  //  URLImage(url: pokemon.imageUrl)
-                                    AnimatedImage(url: URL(string: pokemon.url))
-                                        .frame(width: 50, height: 50)
-                                    Text(pokemon.name.capitalized)
-                                }
-                            }
-                            .onAppear {
-                                if viewModel.pokemonList.isLastItem(pokemon) {
-                                    viewModel.fetchPokemonList()
-                                }
-                            }
+            List {
+                ForEach(viewModel.pokemonList.results, id: \.id) { pokemon in
+                    NavigationLink(destination: PokemonDetailView(pokemonId: pokemon.id.hashValue)) {
+                        HStack {
+//                            AnimatedImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemon.id + 1).png")!)
+                            Text(pokemon.name.capitalized)
+                                .frame(height: 44)
+                        }
+                    }
+                    .onAppear {
+                        if viewModel.pokemonList.results.isLastItem(pokemon) {
+                            viewModel.fetchPokemonList()
                         }
                     }
                 }
@@ -43,8 +32,9 @@ struct PokemonListView: View {
 
 extension Array where Element == PokemonListItem {
     func isLastItem(_ item: Element) -> Bool {
-        guard let lastItem = self.last else { return false }
-        return item.id == lastItem.id
+        guard self.last != nil else { return true }
+      //  return item.id == lastItem.id
+        return false
     }
 }
 

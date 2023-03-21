@@ -83,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				756B14AB29C4A3BF00A02D61 /* PokemonToGoApp.swift */,
+				756B14AD29C4A3BF00A02D61 /* ContentView.swift */,
 				75DCD49B29C84D7000DA226B /* Services */,
 				75BF605329C4B09E00F7EE0D /* Models */,
 				75BF605429C4B0AF00F7EE0D /* Views */,
@@ -115,7 +116,6 @@
 			children = (
 				75DCD4AA29C8760F00DA226B /* PokemonDetailView.swift */,
 				75DCD4AE29C8764E00DA226B /* PokemonListView.swift */,
-				756B14AD29C4A3BF00A02D61 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -459,7 +459,7 @@
 				756B14B529C4A3C100A02D61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		756B14B629C4A3C100A02D61 /* Build configuration list for PBXNativeTarget "PokemonToGo" */ = {
 			isa = XCConfigurationList;
@@ -468,7 +468,7 @@
 				756B14B829C4A3C100A02D61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

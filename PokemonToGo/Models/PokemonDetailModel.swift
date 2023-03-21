@@ -1,25 +1,30 @@
 import Foundation
 
 struct PokemonDetails: Codable {
-    let id: Int
     let name: String
-    let types: [PokemonType]
     let weight: Int
     let height: Int
+    let types: [PokemonTypes]
+   // let srpites: Sprites
     
-    var imageUrl: URL {
-        let number = String(format: "%03d", id)
-        return URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(number).png")!
+
+//    var imageUrl: URL {
+//        let number = String.self
+//        return URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(number).png")
+//    }
+}
+struct Sprites: Codable {
+    let frontDefaultImageURL: String
+    
+    enum CodingKeys: String, CodingKey {
+        case frontDefaultImageURL = "front_default"
     }
 }
 
-struct PokemonType: Codable, Identifiable {
-    var id = UUID()
-    let slot: Int
-    let type: Type
+struct PokemonTypes: Codable {
+    let type: PokemonNames
 }
 
-struct Type: Codable {
+struct PokemonNames: Codable {
     let name: String
-    let url: String
 }
