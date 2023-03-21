@@ -6,16 +6,9 @@ struct PokemonList: Codable {
     let results: [PokemonListItem]
 }
 
-struct PokemonListItem: Codable, Identifiable, Equatable {
-    var id = UUID()
+struct PokemonListItem: Codable, Identifiable {
+    let id: Int
     let name: String
     let url: String
     
-    static var samplePokemon = PokemonListItem(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")
-}
-
-struct PokemonDetail: Codable {
-    let id: Int
-    let height: Int
-    let weight: Int
 }
