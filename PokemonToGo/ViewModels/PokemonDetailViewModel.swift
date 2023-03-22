@@ -13,21 +13,28 @@ class PokemonDetailsViewModel: ObservableObject {
         self.pokemonService = pokemonService
 
     }
-
-func fetchPokemonDetails(id: Int) {
-    isLoading = true
-    error = nil
-    
-    pokemonService.fetchPokemonDetails(id: id) { result in
-        DispatchQueue.main.async {
-            self.isLoading = false
-            switch result {
-            case .success(let pokemonDetails):
-                self.pokemonDetails = pokemonDetails
-            case .failure(let error):
-                self.error = error
+    func fetchPokemonDetails(id: Int) {
+        isLoading = true
+        error = nil
+        
+        pokemonService.fetchPokemonDetails(id: id) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                case .success(let pokemonDetails):
+                    self?.pokemonDetails = pokemonDetails
+                    self?.isLoading = false
+                    self?.error = nil
+                case .failure(let error):
+                    self?.isLoading = false
+                    self?.error = error
+                    
+                }
+                
             }
+            
         }
+        
     }
-}
+    
 }

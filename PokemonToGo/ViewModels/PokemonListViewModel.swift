@@ -1,9 +1,10 @@
 import Foundation
 
 class PokemonListViewModel: ObservableObject {
-   @Published var pokemonList: PokemonList = PokemonList(count: 20, next: "", previous: "", results: [])
+   @Published var pokemonList: PokemonList = PokemonList(count: 0, next: nil, previous: nil, results: [])
    @Published var isLoading = false
    @Published var error: Error?
+    
    
    private let pokemonService: PokemonServiceProtocol
    private var nextUrl: String?
@@ -12,7 +13,8 @@ class PokemonListViewModel: ObservableObject {
        self.pokemonService = pokemonService
    }
    
-    @MainActor func fetchPokemonList() {
+    func fetchPokemonList() {
+        guard !isLoading else { return }
        isLoading = true
        error = nil
        
@@ -24,7 +26,7 @@ class PokemonListViewModel: ObservableObject {
                switch result {
                case .success(let response):
                    self.nextUrl = response.next
-                   self.pokemonList = response
+                   self.pokemonList.results.append(contentsOf: response.results)
                case .failure(let error):
                    self.error = error
                }

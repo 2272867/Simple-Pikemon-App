@@ -19,12 +19,11 @@ struct PokemonDetailView: View {
                 Text(error.localizedDescription)
             } else if let pokemon = viewModel.pokemonDetails {
                 VStack {
-                   // ZStack {
-                        AnimatedImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemonId).png")!)
-                            .frame(width: 200, height: 200)
-                            .background(AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center))
-                        
-                  //  }
+
+                    URLImage(url: pokemon.imageUrl)
+                        .frame(width: 200, height: 200)
+                        .background(AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center))
+                    
                     
                     Text(pokemon.name.capitalized)
                         .font(.title)
@@ -57,6 +56,7 @@ struct PokemonDetailView: View {
                         .cornerRadius(20)
                     }
                     .padding()
+                    
 
                 }
             }

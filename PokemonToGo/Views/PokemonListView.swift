@@ -1,29 +1,33 @@
 import SwiftUI
-import SDWebImageSwiftUI
+//import SDWebImageSwiftUI
+import Combine  
 
 struct PokemonListView: View {
     @StateObject private var viewModel = PokemonListViewModel()
     
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(viewModel.pokemonList.results, id: \.id) { pokemon in
-                    NavigationLink(destination: PokemonDetailView(pokemonId: pokemon.id.hashValue)) {
-                        HStack {
-//                            AnimatedImage(url: URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(pokemon.id + 1).png")!)
-                            Text(pokemon.name.capitalized)
-                                .frame(height: 44)
+       // NavigationView {
+            GeometryReader { geometry in
+                LazyVStack {
+                    ForEach(viewModel.pokemonList.results, id: \.id) { pokemon in
+                        NavigationLink(destination: PokemonDetailView(pokemonId: pokemon.id.hashValue)) {
+                            HStack {
+                                Text(pokemon.name.capitalized)
+                                    .frame(height: 44)
+                            }
                         }
-                    }
-                    .onAppear {
-                        if viewModel.pokemonList.results.isLastItem(pokemon) {
-                            viewModel.fetchPokemonList()
+                        .onAppear {
+                            if viewModel.pokemonList.results.isLastItem(pokemon) {
+                                viewModel.fetchPokemonList()
+                            }
                         }
                     }
                 }
+                .navigationBarTitle("Pokemon List")
+                
             }
-            .navigationBarTitle("Pokemon List")
-        }
+      //  }
         .onAppear {
             viewModel.fetchPokemonList()
         }

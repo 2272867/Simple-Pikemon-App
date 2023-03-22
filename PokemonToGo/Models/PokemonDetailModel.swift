@@ -1,17 +1,17 @@
 import Foundation
 
 struct PokemonDetails: Codable {
+    let id: Int
     let name: String
     let weight: Int
     let height: Int
     let types: [PokemonTypes]
    // let srpites: Sprites
     
-
-//    var imageUrl: URL {
-//        let number = String.self
-//        return URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(number).png")
-//    }
+    var imageUrl: URL {
+        let number = self.id
+        return URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(number).png")!
+    }
 }
 struct Sprites: Codable {
     let frontDefaultImageURL: String
