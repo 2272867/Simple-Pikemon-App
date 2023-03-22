@@ -7,26 +7,42 @@ class PokemonListViewModel: ObservableObject {
     
    
    private let pokemonService: PokemonServiceProtocol
+    private var currentPage = 0
    private var nextUrl: String?
    
    init(pokemonService: PokemonServiceProtocol = PokemonService()) {
        self.pokemonService = pokemonService
    }
    
+
+    
     func fetchPokemonList() {
         guard !isLoading else { return }
        isLoading = true
        error = nil
+        
+        let limit = 20
+        let offset = currentPage * limit
+        let url = "https://pokeapi.co/api/v2/pokemon/?limit=\(limit)&offset=\(offset)"
+        
+        
        
-       pokemonService.fetchPokemonList(url: nextUrl) { [weak self] result in
+       pokemonService.fetchPokemonList(url: url) { [weak self] result in
            DispatchQueue.main.async {
                guard let self = self else { return }
                self.isLoading = false
                
                switch result {
                case .success(let response):
-                   self.nextUrl = response.next
-                   self.pokemonList.results.append(contentsOf: response.results)
+                   self.pokemonList.count = response.count
+                   self.pokemonList.next = response.next
+                   self.pokemonList.previous = response.previous
+                   
+                   if self.currentPage == 0 {
+                       self.pokemonList.results = response.results
+                   } else {
+                      self.pokemonList.results.append(contentsOf: response.results)
+                   }
                case .failure(let error):
                    self.error = error
                }

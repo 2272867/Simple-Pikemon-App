@@ -4,12 +4,13 @@ import Combine
 
 struct PokemonListView: View {
     @StateObject private var viewModel = PokemonListViewModel()
+    @State private var currentPage = 0
+    
     
     
     var body: some View {
-       // NavigationView {
-            GeometryReader { geometry in
-                LazyVStack {
+        NavigationView {
+                List {
                     ForEach(viewModel.pokemonList.results, id: \.id) { pokemon in
                         NavigationLink(destination: PokemonDetailView(pokemonId: pokemon.id.hashValue)) {
                             HStack {
@@ -26,8 +27,7 @@ struct PokemonListView: View {
                 }
                 .navigationBarTitle("Pokemon List")
                 
-            }
-      //  }
+        }
         .onAppear {
             viewModel.fetchPokemonList()
         }
