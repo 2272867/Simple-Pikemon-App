@@ -1,4 +1,6 @@
 import Foundation
+import SwiftUI
+import Combine
 
 class PokemonListViewModel: ObservableObject {
    @Published var pokemonList: PokemonList = PokemonList(count: 0, next: nil, previous: nil, results: [])
@@ -13,8 +15,10 @@ class PokemonListViewModel: ObservableObject {
    init(pokemonService: PokemonServiceProtocol = PokemonService()) {
        self.pokemonService = pokemonService
    }
-   
+    
 
+    
+        
     
     func fetchPokemonList() {
         guard !isLoading else { return }
@@ -25,7 +29,12 @@ class PokemonListViewModel: ObservableObject {
         let offset = currentPage * limit
         let url = "https://pokeapi.co/api/v2/pokemon/?limit=\(limit)&offset=\(offset)"
         
-        
+//        func getPokemonIndex(pokemon: PokemonList.result) -> Int {
+//            if let index = self.pokemonList.results.firstIndex(of: pokemon) {
+//                return index + 1
+//            }
+//            return 0
+//        }
        
        pokemonService.fetchPokemonList(url: url) { [weak self] result in
            DispatchQueue.main.async {

@@ -1,13 +1,14 @@
 import Foundation
 import SwiftUI
+import Combine
 
-class PokemonDetailsViewModel: ObservableObject {
+final class PokemonDetailsViewModel: ObservableObject {
+    
     @Published var pokemonDetails: PokemonDetails?
     @Published var isLoading = false
     @Published var error: Error?
     
     private let pokemonService: PokemonServiceProtocol
-    
     
     init(pokemonService: PokemonServiceProtocol = PokemonService()) {
         self.pokemonService = pokemonService
@@ -23,18 +24,11 @@ class PokemonDetailsViewModel: ObservableObject {
                 switch result {
                 case .success(let pokemonDetails):
                     self?.pokemonDetails = pokemonDetails
-                    self?.isLoading = false
                     self?.error = nil
                 case .failure(let error):
-                    self?.isLoading = false
                     self?.error = error
-                    
                 }
-                
             }
-            
         }
-        
     }
-    
 }

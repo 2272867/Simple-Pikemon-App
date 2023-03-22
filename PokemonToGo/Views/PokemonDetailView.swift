@@ -3,8 +3,8 @@ import Combine
 import SDWebImageSwiftUI
 
 struct PokemonDetailView: View {
-    @StateObject private var viewModel = PokemonDetailsViewModel()
-    
+    @StateObject var viewModel = PokemonDetailsViewModel()
+//    @ObservedObject var viewModel: PokemonDetailsViewModel
     let pokemonId: Int
     
     var body: some View {
@@ -14,6 +14,7 @@ struct PokemonDetailView: View {
                 .ignoresSafeArea()
         VStack {
             if viewModel.isLoading {
+                Text("Loading...")
                 ProgressView()
             } else if let error = viewModel.error {
                 Text(error.localizedDescription)

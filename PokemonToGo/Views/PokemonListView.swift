@@ -1,18 +1,23 @@
+import Foundation
 import SwiftUI
-//import SDWebImageSwiftUI
-import Combine  
+import Combine
 
 struct PokemonListView: View {
     @StateObject private var viewModel = PokemonListViewModel()
     @State private var currentPage = 0
     
-    
+    func getPokemonIndex(pokemon: PokemonListItem) -> Int {
+        if let index = viewModel.pokemonList.results.firstIndex(of: pokemon) {
+            return index + 1
+        }
+        return 0
+    }
     
     var body: some View {
         NavigationView {
                 List {
-                    ForEach(viewModel.pokemonList.results, id: \.id) { pokemon in
-                        NavigationLink(destination: PokemonDetailView(pokemonId: pokemon.id.hashValue)) {
+                    ForEach(viewModel.pokemonList.results) { pokemon in
+                        NavigationLink(destination: PokemonDetailView(pokemonId: self.getPokemonIndex(pokemon: pokemon))) {
                             HStack {
                                 Text(pokemon.name.capitalized)
                                     .frame(height: 44)

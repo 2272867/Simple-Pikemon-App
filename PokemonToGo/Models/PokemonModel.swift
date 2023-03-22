@@ -1,4 +1,6 @@
 import Foundation
+import SwiftUI
+import Combine
 
 struct PokemonList: Codable {
     var count: Int
@@ -16,11 +18,11 @@ struct PokemonListItem: Codable, Identifiable, Equatable {
         case name, url
     }
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        self.name = try container.decode(String.self, forKey: .name)
-        self.url = try container.decode(String.self, forKey: .url)
-    }
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//
+//        self.name = try container.decode(String.self, forKey: .name)
+//        self.url = try container.decode(String.self, forKey: .url)
+//    }
     
 }

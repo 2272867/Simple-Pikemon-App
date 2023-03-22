@@ -86,8 +86,8 @@
 				756B14AD29C4A3BF00A02D61 /* ContentView.swift */,
 				75DCD49B29C84D7000DA226B /* Services */,
 				75BF605329C4B09E00F7EE0D /* Models */,
-				75BF605429C4B0AF00F7EE0D /* Views */,
 				75BF605529C4B0BA00F7EE0D /* ViewModels */,
+				75BF605429C4B0AF00F7EE0D /* Views */,
 				756B14AF29C4A3C100A02D61 /* Assets.xcassets */,
 				756B14B129C4A3C100A02D61 /* Preview Content */,
 			);
@@ -114,8 +114,8 @@
 		75BF605429C4B0AF00F7EE0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				75DCD4AA29C8760F00DA226B /* PokemonDetailView.swift */,
 				75DCD4AE29C8764E00DA226B /* PokemonListView.swift */,
+				75DCD4AA29C8760F00DA226B /* PokemonDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -123,8 +123,8 @@
 		75BF605529C4B0BA00F7EE0D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7543545B29C8D3A3001081E4 /* PokemonDetailViewModel.swift */,
 				755C5F4C29C9870E009B88A2 /* PokemonListViewModel.swift */,
+				7543545B29C8D3A3001081E4 /* PokemonDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

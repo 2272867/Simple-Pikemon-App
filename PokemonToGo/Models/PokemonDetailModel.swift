@@ -1,6 +1,8 @@
 import Foundation
+import SwiftUI
+import Combine
 
-struct PokemonDetails: Codable {
+struct PokemonDetails: Codable, Identifiable {
     let id: Int
     let name: String
     let weight: Int
