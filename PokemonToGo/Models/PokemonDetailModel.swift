@@ -8,7 +8,7 @@ struct PokemonDetails: Codable, Identifiable {
     let weight: Int
     let height: Int
     let types: [PokemonTypes]
-   // let srpites: Sprites
+    // let srpites: Sprites
     
     var imageUrl: URL {
         let number = self.id

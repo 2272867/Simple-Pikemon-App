@@ -12,7 +12,7 @@ final class PokemonDetailsViewModel: ObservableObject {
     
     init(pokemonService: PokemonServiceProtocol = PokemonService()) {
         self.pokemonService = pokemonService
-
+        
     }
     func fetchPokemonDetails(id: Int) {
         isLoading = true

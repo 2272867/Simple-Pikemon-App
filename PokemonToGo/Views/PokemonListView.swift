@@ -15,26 +15,32 @@ struct PokemonListView: View {
     
     var body: some View {
         NavigationView {
-                List {
+        ScrollView {
+                LazyVStack {
                     ForEach(viewModel.pokemonList.results) { pokemon in
                         NavigationLink(destination: PokemonDetailView(pokemonId: self.getPokemonIndex(pokemon: pokemon))) {
                             HStack {
-                                Text(pokemon.name.capitalized)
-                                    .frame(height: 44)
+                                VStack {
+                                    Text(pokemon.name.capitalized)
+                                        .font(.title)
+                                        .foregroundColor(.black)
+                                }
+                                .frame(width: UIScreen.main.bounds.width - 20, height: 44)
+                                .background(Color.gray.opacity(0.7))
+                                .cornerRadius(20)
                             }
+                        }.onAppear {
+                            viewModel.fetchPokemonList()
                         }
-                        .onAppear {
-                            if viewModel.pokemonList.results.isLastItem(pokemon) {
-                                viewModel.fetchPokemonList()
-                            }
-                        }
+
                     }
                 }
                 .navigationBarTitle("Pokemon List")
-                
+                .onAppear {
+                    viewModel.fetchPokemonList()
+                }
         }
-        .onAppear {
-            viewModel.fetchPokemonList()
+
         }
     }
 }
