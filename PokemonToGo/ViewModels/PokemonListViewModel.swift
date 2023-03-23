@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class PokemonListViewModel: ObservableObject {
+final class PokemonListViewModel: ObservableObject {
     @Published var pokemonList: PokemonList = PokemonList(count: 0, next: nil, previous: nil, results: [])
     @Published var isLoading = false
     @Published var error: Error?
