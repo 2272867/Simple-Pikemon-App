@@ -1,2 +1,2 @@
 # Simple Pikemon App
-Innowise test
+Innowise Group Test
