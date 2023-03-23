@@ -1,10 +1,8 @@
 import SwiftUI
 import Combine
-import SDWebImageSwiftUI
 
 struct PokemonDetailView: View {
     @StateObject var viewModel = PokemonDetailsViewModel()
-    //    @ObservedObject var viewModel: PokemonDetailsViewModel
     let pokemonId: Int
     
     var body: some View {

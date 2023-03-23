@@ -4,7 +4,6 @@ import Combine
 
 struct PokemonListView: View {
     @StateObject private var viewModel = PokemonListViewModel()
-    @State private var currentPage = 0
     
     func getPokemonIndex(pokemon: PokemonListItem) -> Int {
         if let index = viewModel.pokemonList.results.firstIndex(of: pokemon) {
@@ -15,7 +14,7 @@ struct PokemonListView: View {
     
     var body: some View {
         NavigationView {
-        ScrollView {
+            ScrollView {
                 LazyVStack {
                     ForEach(viewModel.pokemonList.results) { pokemon in
                         NavigationLink(destination: PokemonDetailView(pokemonId: self.getPokemonIndex(pokemon: pokemon))) {
@@ -32,15 +31,15 @@ struct PokemonListView: View {
                         }.onAppear {
                             viewModel.fetchPokemonList()
                         }
-
+                        
                     }
                 }
                 .navigationBarTitle("Pokemon List")
-                .onAppear {
-                    viewModel.fetchPokemonList()
-                }
-        }
-
+                
+            }.onAppear {
+                viewModel.fetchPokemonList()
+            }
+            
         }
     }
 }
@@ -48,7 +47,6 @@ struct PokemonListView: View {
 extension Array where Element == PokemonListItem {
     func isLastItem(_ item: Element) -> Bool {
         guard self.last != nil else { return true }
-      //  return item.id == lastItem.id
         return false
     }
 }

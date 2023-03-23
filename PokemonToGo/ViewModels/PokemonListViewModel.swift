@@ -21,7 +21,7 @@ class PokemonListViewModel: ObservableObject {
         isLoading = true
         error = nil
         
-        let limit = 20
+        let limit = 15
         let offset = currentPage * limit
         let url = "https://pokeapi.co/api/v2/pokemon/?limit=\(limit)&offset=\(offset)"
         

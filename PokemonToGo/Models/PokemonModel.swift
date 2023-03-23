@@ -17,12 +17,4 @@ struct PokemonListItem: Codable, Identifiable, Equatable {
     private enum CodingKeys: String, CodingKey {
         case name, url
     }
-    
-    //    init(from decoder: Decoder) throws {
-    //        let container = try decoder.container(keyedBy: CodingKeys.self)
-    //
-    //        self.name = try container.decode(String.self, forKey: .name)
-    //        self.url = try container.decode(String.self, forKey: .url)
-    //    }
-    
 }
