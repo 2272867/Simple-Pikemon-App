@@ -19,7 +19,18 @@
 		75DCD4AF29C8764E00DA226B /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DCD4AE29C8764E00DA226B /* PokemonListView.swift */; };
 		75DCD4B329C8768100DA226B /* PokemonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DCD4B229C8768100DA226B /* PokemonService.swift */; };
 		75E2AFE029EE94650028E912 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2AFDF29EE94650028E912 /* CacheService.swift */; };
+		75E2AFEF29EEB0A70028E912 /* PokemonToGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2AFEE29EEB0A70028E912 /* PokemonToGoTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		75E2AFF029EEB0A70028E912 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 756B14A029C4A3BF00A02D61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 756B14A729C4A3BF00A02D61;
+			remoteInfo = PokemonToGo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7543545929C8CFD0001081E4 /* URLImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageLoader.swift; sourceTree = "<group>"; };
@@ -35,10 +46,19 @@
 		75DCD4AE29C8764E00DA226B /* PokemonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListView.swift; sourceTree = "<group>"; };
 		75DCD4B229C8768100DA226B /* PokemonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonService.swift; sourceTree = "<group>"; };
 		75E2AFDF29EE94650028E912 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		75E2AFEC29EEB0A70028E912 /* PokemonToGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokemonToGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		75E2AFEE29EEB0A70028E912 /* PokemonToGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonToGoTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		756B14A529C4A3BF00A02D61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75E2AFE929EEB0A70028E912 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -52,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				756B14AA29C4A3BF00A02D61 /* PokemonToGo */,
+				75E2AFED29EEB0A70028E912 /* PokemonToGoTests */,
 				756B14A929C4A3BF00A02D61 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				756B14A829C4A3BF00A02D61 /* PokemonToGo.app */,
+				75E2AFEC29EEB0A70028E912 /* PokemonToGoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +137,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		75E2AFED29EEB0A70028E912 /* PokemonToGoTests */ = {
+			isa = PBXGroup;
+			children = (
+				75E2AFEE29EEB0A70028E912 /* PokemonToGoTests.swift */,
+			);
+			path = PokemonToGoTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +165,24 @@
 			productReference = 756B14A829C4A3BF00A02D61 /* PokemonToGo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		75E2AFEB29EEB0A70028E912 /* PokemonToGoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75E2AFF229EEB0A70028E912 /* Build configuration list for PBXNativeTarget "PokemonToGoTests" */;
+			buildPhases = (
+				75E2AFE829EEB0A70028E912 /* Sources */,
+				75E2AFE929EEB0A70028E912 /* Frameworks */,
+				75E2AFEA29EEB0A70028E912 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				75E2AFF129EEB0A70028E912 /* PBXTargetDependency */,
+			);
+			name = PokemonToGoTests;
+			productName = PokemonToGoTests;
+			productReference = 75E2AFEC29EEB0A70028E912 /* PokemonToGoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -147,6 +195,10 @@
 				TargetAttributes = {
 					756B14A729C4A3BF00A02D61 = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					75E2AFEB29EEB0A70028E912 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 756B14A729C4A3BF00A02D61;
 					};
 				};
 			};
@@ -164,6 +216,7 @@
 			projectRoot = "";
 			targets = (
 				756B14A729C4A3BF00A02D61 /* PokemonToGo */,
+				75E2AFEB29EEB0A70028E912 /* PokemonToGoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -174,6 +227,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				756B14B029C4A3C100A02D61 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75E2AFEA29EEB0A70028E912 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +258,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		75E2AFE829EEB0A70028E912 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75E2AFEF29EEB0A70028E912 /* PokemonToGoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		75E2AFF129EEB0A70028E912 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 756B14A729C4A3BF00A02D61 /* PokemonToGo */;
+			targetProxy = 75E2AFF029EEB0A70028E912 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		756B14B429C4A3C100A02D61 /* Debug */ = {
@@ -258,6 +334,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -297,6 +374,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -371,6 +449,40 @@
 			};
 			name = Release;
 		};
+		75E2AFF329EEB0A70028E912 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = PSPrjct.PokemonToGoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokemonToGo.app/PokemonToGo";
+			};
+			name = Debug;
+		};
+		75E2AFF429EEB0A70028E912 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = PSPrjct.PokemonToGoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PokemonToGo.app/PokemonToGo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -388,6 +500,15 @@
 			buildConfigurations = (
 				756B14B729C4A3C100A02D61 /* Debug */,
 				756B14B829C4A3C100A02D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		75E2AFF229EEB0A70028E912 /* Build configuration list for PBXNativeTarget "PokemonToGoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75E2AFF329EEB0A70028E912 /* Debug */,
+				75E2AFF429EEB0A70028E912 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

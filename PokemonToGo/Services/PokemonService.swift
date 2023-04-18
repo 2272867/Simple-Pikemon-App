@@ -3,7 +3,7 @@ import SwiftUI
 import Combine
 import Network
 
-enum APIError: Error {
+enum APIError: Error, Equatable {
     case noData
     case invalidURL
     case serverError(String)
