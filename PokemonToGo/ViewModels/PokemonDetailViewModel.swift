@@ -9,9 +9,11 @@ final class PokemonDetailsViewModel: ObservableObject {
     @Published var error: Error?
     
     private let pokemonService: PokemonServiceProtocol
+    private let imageLoader: ImageLoaderProtocol
     
-    init(pokemonService: PokemonServiceProtocol = PokemonService()) {
+    init(pokemonService: PokemonServiceProtocol = PokemonService(), imageLoader: ImageLoaderProtocol = ImageLoader()) {
         self.pokemonService = pokemonService
+        self.imageLoader = imageLoader
         
     }
     func fetchPokemonDetails(id: Int) {

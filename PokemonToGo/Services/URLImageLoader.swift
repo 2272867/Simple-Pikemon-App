@@ -2,9 +2,18 @@ import Foundation
 import SwiftUI
 import Combine
 
+protocol ImageLoaderProtocol {
+    func loadImage(url: URL)
+}
+
 struct URLImage: View {
     let url: URL
     @StateObject private var imageLoader = ImageLoader()
+    
+    init(url: URL, ImageLoader: ImageLoader = ImageLoader()) {
+        self.url = url
+        self._imageLoader = StateObject(wrappedValue: ImageLoader)
+    }
     
     var body: some View {
         if let image = imageLoader.image {
@@ -19,7 +28,7 @@ struct URLImage: View {
     }
 }
 
-class ImageLoader: ObservableObject {
+final class ImageLoader: ObservableObject, ImageLoaderProtocol {
     @Published var image: UIImage?
     
     private var cancellable: AnyCancellable?

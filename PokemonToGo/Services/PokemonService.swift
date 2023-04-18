@@ -13,7 +13,7 @@ protocol PokemonServiceProtocol {
     func fetchPokemonDetails(id: Int, completion: @escaping (Result<PokemonDetails, Error>) -> Void)
 }
 
-class PokemonService: PokemonServiceProtocol {
+final class PokemonService: PokemonServiceProtocol {
     private let queue = DispatchQueue(label: "Pokemon.WebService", qos: .background, attributes: .concurrent)
     private let baseUrl = "https://pokeapi.co/api/v2/pokemon/"
     

@@ -7,7 +7,7 @@ struct PokemonDetailView: View {
     
     var body: some View {
         ZStack {
-            Image("pokedexBackground")
+            Image("pokedexBackground2")
                 .resizable()
                 .ignoresSafeArea()
             VStack {
