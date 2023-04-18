@@ -18,6 +18,7 @@
 		75DCD4AB29C8760F00DA226B /* PokemonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DCD4AA29C8760F00DA226B /* PokemonDetailView.swift */; };
 		75DCD4AF29C8764E00DA226B /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DCD4AE29C8764E00DA226B /* PokemonListView.swift */; };
 		75DCD4B329C8768100DA226B /* PokemonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DCD4B229C8768100DA226B /* PokemonService.swift */; };
+		75E2AFE029EE94650028E912 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2AFDF29EE94650028E912 /* CacheService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		75DCD4AA29C8760F00DA226B /* PokemonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailView.swift; sourceTree = "<group>"; };
 		75DCD4AE29C8764E00DA226B /* PokemonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListView.swift; sourceTree = "<group>"; };
 		75DCD4B229C8768100DA226B /* PokemonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonService.swift; sourceTree = "<group>"; };
+		75E2AFDF29EE94650028E912 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			children = (
 				75DCD4B229C8768100DA226B /* PokemonService.swift */,
 				7543545929C8CFD0001081E4 /* URLImageLoader.swift */,
+				75E2AFDF29EE94650028E912 /* CacheService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				75DCD4B329C8768100DA226B /* PokemonService.swift in Sources */,
 				755C5F4D29C9870E009B88A2 /* PokemonListViewModel.swift in Sources */,
 				7543545A29C8CFD0001081E4 /* URLImageLoader.swift in Sources */,
+				75E2AFE029EE94650028E912 /* CacheService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
