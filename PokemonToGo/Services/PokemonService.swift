@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 import Combine
 import Network
+import CoreData
 
 enum APIError: Error, Equatable {
     case noData
@@ -18,7 +19,7 @@ final class PokemonService: PokemonServiceProtocol {
     private let queue = DispatchQueue(label: "Pokemon.WebService", qos: .background, attributes: .concurrent)
     private let baseUrl = "https://pokeapi.co/api/v2/pokemon/"
     private let monitor = NWPathMonitor()
-    var isInternetAvailable: Bool = false
+    var isInternetAvailable: Bool = true
     
     init() {
         monitor.pathUpdateHandler = { path in
@@ -33,20 +34,47 @@ final class PokemonService: PokemonServiceProtocol {
     }
     
     func fetchPokemonList(url: String?, completion: @escaping (Result<PokemonList, Error>) -> Void) {
+        print("fetch list")
         let url = url ?? baseUrl
         
-        if let cachedData = CacheService.shared.object(forKey: url) as? Data,
-           let pokemonList = try? JSONDecoder().decode(PokemonList.self, from: cachedData) {
-            completion(.success(pokemonList))
-            return
-        }
         if !isInternetAvailable {
+            let context = CoreDataManager.shared.persistentContainer.viewContext
+            let request: NSFetchRequest<PokemonListItemEntity> = PokemonListItemEntity.fetchRequest()
+            
+            do {
+                let results = try context.fetch(request)
+                let pokemonList = PokemonList(count: results.count, next: nil, previous: nil, results: results.map { PokemonListItem(id: $0.id!, name: $0.name!, url: $0.url!) })
+                completion(.success(pokemonList))
+            } catch {
+                print("Failed to fetch pokemon list items: \(error)")
+            }
+            
             let message = "Only pokemon that have already been viewed will be available for viewing."
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "No internet connection", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                    let rootViewController = windowScene.windows.first?.rootViewController {
+                    let alert = UIAlertController(title: "No internet connection", message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    rootViewController.present(alert, animated: true, completion: nil)
+                }
             }
+            
+            return
+        }
+        
+        let isDataRetrieved = UserDefaults.standard.bool(forKey: "isDataRetrieved")
+        if isDataRetrieved {
+            let context = CoreDataManager.shared.persistentContainer.viewContext
+            let request: NSFetchRequest<PokemonListItemEntity> = PokemonListItemEntity.fetchRequest()
+            
+            do {
+                let results = try context.fetch(request)
+                let pokemonList = PokemonList(count: results.count, next: nil, previous: nil, results: results.map { PokemonListItem(id: $0.id!, name: $0.name!, url: $0.url!) })
+                completion(.success(pokemonList))
+            } catch {
+                print("Failed to fetch pokemon list items: \(error)")
+            }
+            
             return
         }
         
@@ -60,26 +88,24 @@ final class PokemonService: PokemonServiceProtocol {
                     completion(.failure(error))
                     return
                 }
-                
                 guard let data = data else {
                     completion(.failure(APIError.noData))
                     return
                 }
-                
                 do {
                     let pokemonList = try JSONDecoder().decode(PokemonList.self, from: data)
-                    CacheService.shared.setObject(data as AnyObject, forKey: url)
+                    CoreDataManager.shared.savePokemonListItems(pokemonList.results)
+                    UserDefaults.standard.set(true, forKey: "isDataRetrieved")
                     completion(.success(pokemonList))
                 } catch {
                     completion(.failure(error))
                 }
             }.resume()
         }
-        
     }
-    
     func fetchPokemonDetails(id: Int, completion: @escaping (Result<PokemonDetails, Error>) -> Void) {
         let url = "\(baseUrl)\(id)"
+        print("fetch details")
         
         if let cachedData = CacheService.shared.object(forKey: url) as? Data,
            let PokemonDetails = try? JSONDecoder().decode(PokemonDetails.self, from: cachedData) {

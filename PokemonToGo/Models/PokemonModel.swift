@@ -10,11 +10,16 @@ struct PokemonList: Codable {
 }
 
 struct PokemonListItem: Codable, Identifiable, Equatable {
-    let id = UUID()
+    let id: String
     let name: String
     let url: String
     
     private enum CodingKeys: String, CodingKey {
-        case name, url
+        case id, name, url
+    }
+    init(id: String, name: String, url: String) {
+        self.id = id
+        self.name = name
+        self.url = url
     }
 }
