@@ -10,7 +10,7 @@ struct PokemonList: Codable {
 }
 
 struct PokemonListItem: Codable, Identifiable, Equatable {
-    let id: String
+    let id: String?
     let name: String
     let url: String
     

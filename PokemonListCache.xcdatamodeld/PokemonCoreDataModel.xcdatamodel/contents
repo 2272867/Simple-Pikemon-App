@@ -6,6 +6,6 @@
         <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="PokemonListItemEntity" positionX="-63" positionY="-18" width="128" height="14"/>
+        <element name="PokemonListItemEntity" positionX="-63" positionY="-18" width="128" height="74"/>
     </elements>
 </model>

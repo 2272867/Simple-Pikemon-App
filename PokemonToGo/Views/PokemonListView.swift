@@ -16,7 +16,7 @@ struct PokemonListView: View {
         NavigationView {
             ScrollView {
                 LazyVStack {
-                    ForEach(viewModel.pokemonList.results) { pokemon in
+                    ForEach(viewModel.pokemonList.results, id: \.name) { pokemon in
                         NavigationLink(destination: PokemonDetailView(pokemonId: self.getPokemonIndex(pokemon: pokemon))) {
                             HStack {
                                 VStack {
